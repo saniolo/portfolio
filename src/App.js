@@ -1,25 +1,62 @@
-import logo from './logo.svg';
 import './App.css';
 
+import Header from './components/header/Header';
+import Home from './components/home/Home';
+import About from './components/about/About';
+import Skills from './components/skills/Skills';
+import Services from './components/services/Services';
+import Qualification from './components/qualification/Qualification';
+import Testimonials from './components/testimonials/Testimonials';
+import Contact from './components/contact/Contact';
+import Footer from './components/footer/Footer';
+import ScrollUp from './components/scrollup/ScrollUp';
+
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Curiosity from './components/curiosity/Curiosity';
+
 function App() {
+
+  /*=================== Toggle Menu ===================*/
+  function onTap() {
+    const menu = document.querySelector(".nav__menu");
+    menu.classList.remove("show-menu");
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Routes>
+        <Route exact path="/" element={< >
+          <Header />
+          <main onClick={onTap} className='main'>
+            <Home />
+            <About />
+            <Skills />
+            <Services />
+            <Qualification />
+            <Testimonials />
+            <Contact />
+          </main>
+          <Footer />
+          <ScrollUp />
+        </>} />
+        <Route path="/lacuriositatiportaqui/:pr" element={<Curiosity />} />
+      </Routes>
+    </Router>
+
   );
 }
 
 export default App;
+{/* < >
+      <Header />
+      <main onClick={onTap} className='main'>
+        <Home />
+        <About />
+        <Skills />
+        <Services />
+        <Qualification />
+        <Testimonials />
+        <Contact />
+      </main>
+      <Footer />
+      <ScrollUp />
+    </> */}
