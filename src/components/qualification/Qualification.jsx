@@ -83,7 +83,7 @@ const Qualification = () => {
                                 <span className="qualification__line"></span>
                             </div>
                             <div>
-                                <h3 className="qualification__title">RoboCup</h3>
+                                <h3 className="qualification__title">RoboCup & First Lego League</h3>
                                 <span className="qualification__subtitle">Padova - Italy</span>
                                 <div className="qualification__calendar">
                                     <i className="uil uil-calendar-alt">2018 - 2019</i>
@@ -102,8 +102,8 @@ const Qualification = () => {
                                 <span className="qualification__line"></span>
                             </div>
                             <div>
-                                <h3 className="qualification__title">Mobile Developer</h3>
-                                <span className="qualification__subtitle">Apple Inc - Italy</span>
+                                <h3 className="qualification__title">Lead Developer Analyst</h3>
+                                <span className="qualification__subtitle">C2T - Remote</span>
                                 <div className="qualification__calendar">
                                     <i className="uil uil-calendar-alt">2021 - Present</i>
                                 </div>
@@ -114,7 +114,7 @@ const Qualification = () => {
                                 <h3 className="qualification__title">Product Designer</h3>
                                 <span className="qualification__subtitle">C2T - Sicily</span>
                                 <div className="qualification__calendar">
-                                    <i className="uil uil-calendar-alt">2022 - Present</i>
+                                    <i className="uil uil-calendar-alt">2021 - Present</i>
                                 </div>
                             </div>
 
@@ -133,9 +133,9 @@ const Qualification = () => {
                             </div>
                             <div>
                                 <h3 className="qualification__title">UX Designer</h3>
-                                <span className="qualification__subtitle">Apple Inc - Italy</span>
+                                <span className="qualification__subtitle">C2T - Remote</span>
                                 <div className="qualification__calendar">
-                                    <i className="uil uil-calendar-alt">2020 - 2021</i>
+                                    <i className="uil uil-calendar-alt">2020 - Present</i>
                                 </div>
                             </div>
                         </div>

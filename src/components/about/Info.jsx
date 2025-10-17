@@ -9,7 +9,7 @@ const Info = () => {
                     Experience
                 </h3>
                 <span className="about__subtitle">
-                    3 Years Working
+                    {new Date().getFullYear() - 2020} Years Working
                 </span>
             </div>
             <div className="about__box">
@@ -18,7 +18,7 @@ const Info = () => {
                     Completed
                 </h3>
                 <span className="about__subtitle">
-                    5 + Projects
+                    8 + Projects
                 </span>
             </div>
             <div className="about__box">

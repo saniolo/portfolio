@@ -22,7 +22,7 @@ const About = () => {
                         Frontend developer, I create web pages with UI - UX user interface, i have years of experience and many clients are happy with the projects carried out.
                     </p>
 
-                    <a download="" href={CV} className="button button--flex">
+                    <a download="CV" href={CV} className="button button--flex">
                         Download CV
                         <svg
                             class="button__icon"
