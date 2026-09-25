@@ -49,6 +49,7 @@ html {
 
 body {
     margin: 0;
+    overflow-x: clip;
     background: var(--copy);
     color: var(--ink);
     font-family: var(--f-form);
@@ -358,6 +359,10 @@ img {
 
 .cover {
     padding-top: clamp(16px, 2.2vw, 28px);
+    /* The stamps start the impress animation enlarged; keep that overshoot inside the sheet
+       so mobile Safari never sees a wider page and zooms out. */
+    overflow-x: hidden;
+    overflow-x: clip;
 }
 
 .block {
@@ -589,7 +594,7 @@ img {
 @keyframes stamp-impress {
     0% {
         opacity: 0.55;
-        transform: scale(1.65);
+        transform: scale(var(--stamp-from, 1.65));
         filter: blur(2.5px);
     }
     55% {
@@ -1233,6 +1238,11 @@ img {
 @media (max-width: 640px) {
     .copies__note {
         display: none;
+    }
+
+    /* Smaller overshoot at phone width: the stamp sits on the sheet's right edge. */
+    .stamp {
+        --stamp-from: 1.3;
     }
 
     .eyelets a {
