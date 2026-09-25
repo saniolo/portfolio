@@ -1,0 +1,373 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-25T13:23:31+00:00",
+  "title": "Design System: Samuel Bruno",
+  "extensions": {
+    "colorMeta": {
+      "ink": {
+        "role": "neutral",
+        "displayName": "Printed Black",
+        "canonical": "oklch(19.1% 0 0)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "carbon": {
+        "role": "primary",
+        "displayName": "Carbon Blue",
+        "canonical": "oklch(35.9% 0.154 265.8)",
+        "tonalRamp": [
+          "#010035",
+          "#050f6d",
+          "#18348f",
+          "#3456b3",
+          "#547adb",
+          "#7ba1fb",
+          "#b4cafc",
+          "#e7efff"
+        ]
+      },
+      "stamp": {
+        "role": "secondary",
+        "displayName": "Stamp Red",
+        "canonical": "oklch(53.9% 0.198 24.9)",
+        "tonalRamp": [
+          "#1f0001",
+          "#4b0006",
+          "#7b0712",
+          "#ac1a23",
+          "#de3c3e",
+          "#f97770",
+          "#feb5af",
+          "#ffe9e6"
+        ]
+      },
+      "copy-white": {
+        "role": "neutral",
+        "displayName": "Print White",
+        "canonical": "#ffffff",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#808080",
+          "#a4a4a4",
+          "#cacaca",
+          "#eeeeee"
+        ]
+      },
+      "tint": {
+        "role": "neutral",
+        "displayName": "Carbon Wash",
+        "canonical": "color-mix(in srgb, var(--carbon) 7%, var(--copy))",
+        "tonalRamp": [
+          "#0a0b0f",
+          "#222428",
+          "#3e4044",
+          "#5c5d62",
+          "#7e8085",
+          "#a2a4aa",
+          "#c8cad0",
+          "#eceef4"
+        ]
+      },
+      "copy-en": {
+        "role": "neutral",
+        "displayName": "Navy Original",
+        "canonical": "#0f1b33",
+        "tonalRamp": [
+          "#020202",
+          "#050505",
+          "#090909",
+          "#0d0d0d",
+          "#2a2a2a",
+          "#595959",
+          "#888888",
+          "#b8b8b8"
+        ]
+      },
+      "copy-it": {
+        "role": "neutral",
+        "displayName": "Bordeaux Copy",
+        "canonical": "#5a1322",
+        "tonalRamp": [
+          "#090203",
+          "#1b060a",
+          "#2d0a11",
+          "#3f0d18",
+          "#6a2b38",
+          "#8c5a64",
+          "#ac8990",
+          "#ceb8bd"
+        ]
+      },
+      "copy-paper": {
+        "role": "neutral",
+        "displayName": "Paper Copy",
+        "canonical": "#f2efe8",
+        "tonalRamp": [
+          "#181817",
+          "#494846",
+          "#797874",
+          "#a9a7a2",
+          "#f3f1ea",
+          "#f6f4ef",
+          "#f8f7f4",
+          "#fbfaf8"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Subject name, project name, void status; carbon, balanced wrap."
+      },
+      "headline": {
+        "displayName": "Section Bar",
+        "purpose": "Uppercase section bars reversed out of ink."
+      },
+      "lead": {
+        "displayName": "Sign-off Lead",
+        "purpose": "The single sign-off sentence on the paper copy."
+      },
+      "title": {
+        "displayName": "Schedule Title",
+        "purpose": "Project names in the test schedule."
+      },
+      "fill-lg": {
+        "displayName": "Fill Large",
+        "purpose": "Role, employer, position fills."
+      },
+      "fill": {
+        "displayName": "Fill",
+        "purpose": "Filled field values in carbon with the carbon impression."
+      },
+      "prose": {
+        "displayName": "Fill Prose",
+        "purpose": "Scope paragraphs, max 62ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Descriptions, duties, work lists in black."
+      },
+      "label": {
+        "displayName": "Printed Label",
+        "purpose": "Field labels, column heads, signature captions; uppercase."
+      },
+      "measure-lg": {
+        "displayName": "Measured Value",
+        "purpose": "Large measured values in results tables."
+      },
+      "measure": {
+        "displayName": "Identifier",
+        "purpose": "Test IDs, doc numbers, periods, footer."
+      },
+      "stamp": {
+        "displayName": "Stamp",
+        "purpose": "Rubber stamp lettering only."
+      }
+    },
+    "shadows": [
+      {
+        "name": "photo-print",
+        "value": "0 14px 26px -12px rgba(20, 20, 20, 0.45), 0 2px 5px rgba(20, 20, 20, 0.18)",
+        "purpose": "The stapled attachment print only."
+      },
+      {
+        "name": "stamp-ring",
+        "value": "inset 0 0 0 2px var(--copy), inset 0 0 0 3.5px var(--stamp)",
+        "purpose": "Inner ring of the rubber stamp; not elevation."
+      },
+      {
+        "name": "carbon-impression",
+        "value": "0.45px 0.35px 0 color-mix(in srgb, var(--carbon) 45%, transparent)",
+        "purpose": "text-shadow on filled values only: the off-register carbon pass."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The only easing curve; all transitions and the stamp impression."
+      },
+      {
+        "name": "copy-flip",
+        "value": "background-color 380ms ease-out",
+        "purpose": "Paper color cross-fade on language change (root, strip, cells)."
+      },
+      {
+        "name": "state",
+        "value": "200ms ease-out",
+        "purpose": "Hover fills, arrow nudges, tab lift."
+      },
+      {
+        "name": "link-underline",
+        "value": "background-size 260ms ease-out",
+        "purpose": "Underline draw-in on filled contact links."
+      },
+      {
+        "name": "stamp-impress",
+        "value": "520ms ease-out, delay 650ms + 340ms per row; scale 1.65 to 1 with blur 2.5px to 0",
+        "purpose": "Stamps land in sequence on first view. Removed under prefers-reduced-motion."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "strip-wrap",
+        "value": "1080px"
+      },
+      {
+        "name": "tablet",
+        "value": "900px"
+      },
+      {
+        "name": "phone",
+        "value": "640px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one ink slab per surface: Contact me, Home.",
+      "html": "<a class=\"ds-button\" href=\"#\">Contact me <svg class=\"ds-arrow\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"M3 10h13M11 5l5 5-5 5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"square\"/></svg></a>",
+      "css": ".ds-button { display: inline-flex; align-items: center; gap: 12px; min-height: 52px; padding: 14px 24px; border: 0; border-radius: 3px; background: var(--ink, #141414); color: #ffffff; font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif; font-stretch: 85%; font-weight: 750; font-size: 1.05rem; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; cursor: pointer; transition: background-color 200ms cubic-bezier(0.16, 1, 0.3, 1), transform 200ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-button .ds-arrow { transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-button:hover { background: var(--carbon, #16318c); } .ds-button:hover .ds-arrow { transform: translateX(3px); } .ds-button:active { transform: translateY(1px); } .ds-button:focus-visible { outline: 3px solid var(--carbon, #16318c); outline-offset: 3px; }"
+    },
+    {
+      "name": "Secondary Link",
+      "kind": "button",
+      "refersTo": "link-secondary",
+      "description": "Underlined text action beside the button (Download CV).",
+      "html": "<a class=\"ds-link\" href=\"#\">Download CV</a>",
+      "css": ".ds-link { color: var(--ink, #141414); font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif; font-weight: 650; font-size: 1rem; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.22em; } .ds-link:hover { color: var(--carbon, #16318c); } .ds-link:focus-visible { outline: 3px solid var(--carbon, #16318c); outline-offset: 3px; }"
+    },
+    {
+      "name": "Copy Tabs",
+      "kind": "custom",
+      "refersTo": "copy-tab-white",
+      "description": "Language switch as paper copies: navy EN original, bordeaux IT copy.",
+      "html": "<div class=\"ds-copies\" role=\"group\"><button type=\"button\" class=\"ds-tab ds-tab--en\" aria-pressed=\"true\">EN <span class=\"ds-tab__note\">Copy 1</span></button><button type=\"button\" class=\"ds-tab ds-tab--it\" aria-pressed=\"false\">IT <span class=\"ds-tab__note\">Copia 2</span></button></div>",
+      "css": ".ds-copies { display: flex; align-items: flex-end; gap: 6px; } .ds-tab { appearance: none; cursor: pointer; display: inline-flex; align-items: baseline; gap: 6px; min-height: 40px; padding: 8px 12px; border: 1.5px solid var(--ink, #141414); border-radius: 3px; color: var(--ink, #141414); font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif; font-stretch: 80%; font-weight: 800; font-size: 0.95rem; letter-spacing: 0.05em; transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-tab--en { background: #0f1b33; } .ds-tab--it { background: #5a1322; } .ds-tab__note { font-family: 'Martian Mono', ui-monospace, Menlo, monospace; font-weight: 500; font-size: 0.72rem; letter-spacing: 0; } .ds-tab[aria-pressed='true'] { box-shadow: 0 3px 0 -1px var(--ink, #141414), 0 6px 14px -6px rgba(20,20,20,0.45); transform: translateY(-2px); } .ds-tab[aria-pressed='false'] { opacity: 0.78; } .ds-tab:hover { opacity: 1; transform: translateY(-2px); } .ds-tab:focus-visible { outline: 3px solid var(--carbon, #16318c); outline-offset: 3px; }"
+    },
+    {
+      "name": "Eyelet Index",
+      "kind": "nav",
+      "refersTo": "",
+      "description": "Section index in the form strip; each link is punched through an eyelet ring.",
+      "html": "<nav class=\"ds-eyelets\"><ol><li><a href=\"#\">Results</a></li><li><a href=\"#\">Schedule</a></li><li><a href=\"#\">Operator</a></li><li><a href=\"#\">Sign-off</a></li></ol></nav>",
+      "css": ".ds-eyelets ol { display: flex; gap: 24px; margin: 0; padding: 0; list-style: none; } .ds-eyelets a { display: inline-flex; align-items: center; gap: 8px; padding: 8px 0; color: var(--ink, #141414); font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif; font-stretch: 80%; font-weight: 650; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; text-decoration: none; } .ds-eyelets a::before { content: ''; width: 11px; height: 11px; border-radius: 50%; border: 2px solid var(--ink, #141414); background: radial-gradient(circle, var(--ink, #141414) 0 2px, transparent 2.5px); flex: none; box-sizing: border-box; } .ds-eyelets a:hover { color: var(--carbon, #16318c); } .ds-eyelets a:hover::before { border-color: var(--carbon, #16318c); background: var(--carbon, #16318c); } .ds-eyelets a:focus-visible { outline: 3px solid var(--carbon, #16318c); outline-offset: 3px; }"
+    },
+    {
+      "name": "Ruled Fields",
+      "kind": "card",
+      "refersTo": "field",
+      "description": "Form cells: ink-gap grid, printed label, carbon fill with impression.",
+      "html": "<div class=\"ds-fields\"><div class=\"ds-field\"><span class=\"ds-label\">Role</span><p class=\"ds-fill\">Software Engineer | Technical Lead</p></div><div class=\"ds-field\"><span class=\"ds-label\">Base</span><p class=\"ds-fill\">Catania, Italy</p></div></div>",
+      "css": ".ds-fields { display: grid; grid-template-columns: 2fr 1fr; gap: 1px; background: var(--ink, #141414); border: 1px solid var(--ink, #141414); border-top-width: 3px; } .ds-field { display: grid; align-content: start; gap: 8px; padding: 12px 16px 14px; background: var(--copy, #ffffff); } .ds-label { font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif; font-stretch: 75%; font-weight: 650; font-size: 0.78rem; line-height: 1.2; letter-spacing: 0.07em; text-transform: uppercase; color: var(--ink, #141414); } .ds-fill { margin: 0; font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif; font-weight: 500; font-size: 1.125rem; line-height: 1.35; color: var(--carbon, #16318c); text-shadow: 0.45px 0.35px 0 color-mix(in srgb, var(--carbon, #16318c) 45%, transparent); }"
+    },
+    {
+      "name": "Result Row",
+      "kind": "custom",
+      "refersTo": "",
+      "description": "Test ID, description with dotted leader, measured value, PASS stamp.",
+      "html": "<table class=\"ds-results\"><tbody><tr><th class=\"ds-id\">TA-01.1</th><td><span class=\"ds-leader\">Gyms and trainers using TrainerApp</span></td><td class=\"ds-value\">600+</td><td><span class=\"ds-stamp\">Pass</span></td></tr></tbody></table>",
+      "css": ".ds-results { width: 100%; border-collapse: collapse; } .ds-results th, .ds-results td { padding: 13px 12px; border-bottom: 1px solid var(--ink, #141414); vertical-align: middle; text-align: left; } .ds-id { width: 1%; white-space: nowrap; font-family: 'Martian Mono', ui-monospace, Menlo, monospace; font-weight: 600; font-size: 0.9rem; text-decoration: underline; text-decoration-thickness: 1.5px; } .ds-leader { display: flex; align-items: flex-end; gap: 12px; font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif; font-size: 1.0625rem; line-height: 1.35; } .ds-leader::after { content: ''; flex: 1 1 2rem; min-width: 2rem; margin-bottom: 0.35em; border-bottom: 2px dotted var(--ink, #141414); } .ds-value { width: 1%; white-space: nowrap; font-family: 'Martian Mono', ui-monospace, Menlo, monospace; font-weight: 600; font-size: clamp(1.6rem, 3.4vw, 2.75rem); line-height: 1; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; color: var(--carbon, #16318c); text-shadow: 0.45px 0.35px 0 color-mix(in srgb, var(--carbon, #16318c) 45%, transparent); } .ds-stamp { display: inline-block; padding: 5px 12px 4px; border: 3px solid var(--stamp, #c8232c); border-radius: 6px; box-shadow: inset 0 0 0 2px var(--copy, #ffffff), inset 0 0 0 3.5px var(--stamp, #c8232c); color: var(--stamp, #c8232c); font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif; font-stretch: 62%; font-weight: 850; font-size: 1.2rem; line-height: 1; letter-spacing: 0.12em; text-transform: uppercase; rotate: -7deg; mix-blend-mode: multiply; }"
+    },
+    {
+      "name": "Section Bar",
+      "kind": "custom",
+      "refersTo": "section-bar",
+      "description": "Full-width ink bar opening each block, headline reversed in the copy color.",
+      "html": "<h2 class=\"ds-bar\">Test schedule</h2>",
+      "css": ".ds-bar { margin: 0; padding: 10px 16px 9px; background: var(--ink, #141414); color: var(--copy, #ffffff); font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif; font-stretch: 75%; font-weight: 800; font-size: clamp(1.25rem, 2.4vw, 1.75rem); line-height: 1.1; letter-spacing: 0.05em; text-transform: uppercase; }"
+    },
+    {
+      "name": "Schedule Row",
+      "kind": "custom",
+      "refersTo": "schedule-row-hover",
+      "description": "One project per row; whole row links to its sheet, tinted on hover.",
+      "html": "<ol class=\"ds-schedule\"><li class=\"ds-row\"><span class=\"ds-row__id\">TA-01</span><div><h3 class=\"ds-row__name\"><a href=\"#\" class=\"ds-stretch\">TrainerApp</a></h3><p class=\"ds-row__meta\">Sport · Technical Lead</p></div><p class=\"ds-row__key\"><span class=\"ds-row__value\">600+</span><span>organisations</span></p><span class=\"ds-row__open\">Open sheet <svg class=\"ds-arrow\" width=\"20\" height=\"20\" viewBox=\"0 0 20 20\" aria-hidden=\"true\"><path d=\"M3 10h13M11 5l5 5-5 5\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"square\"/></svg></span></li></ol>",
+      "css": ".ds-schedule { margin: 0; padding: 0; list-style: none; } .ds-row { position: relative; display: grid; grid-template-columns: 88px minmax(0, 1fr) minmax(160px, 240px) auto; align-items: center; gap: 16px 28px; padding: 22px 16px; border-bottom: 1px solid var(--ink, #141414); font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif; color: var(--ink, #141414); transition: background-color 200ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-row:hover { background: color-mix(in srgb, var(--carbon, #16318c) 7%, var(--copy, #ffffff)); } .ds-row:focus-within { outline: 3px solid var(--carbon, #16318c); outline-offset: -3px; } .ds-row__id { font-family: 'Martian Mono', ui-monospace, Menlo, monospace; font-weight: 600; font-size: 0.95rem; } .ds-row__name { margin: 0; font-stretch: 85%; font-weight: 750; font-size: clamp(1.5rem, 2.6vw, 2.125rem); line-height: 1.05; letter-spacing: -0.01em; color: var(--carbon, #16318c); text-shadow: 0.45px 0.35px 0 color-mix(in srgb, var(--carbon, #16318c) 45%, transparent); } .ds-row__name a { color: inherit; text-decoration: none; outline: none; } .ds-stretch::after { content: ''; position: absolute; inset: 0; } .ds-row__meta { margin: 6px 0 0; font-size: 0.95rem; } .ds-row__key { display: grid; gap: 2px; margin: 0; font-size: 0.95rem; } .ds-row__value { font-family: 'Martian Mono', ui-monospace, Menlo, monospace; font-weight: 600; font-size: 1.5rem; line-height: 1.1; letter-spacing: -0.02em; color: var(--carbon, #16318c); font-variant-numeric: tabular-nums; } .ds-row__open { display: inline-flex; align-items: center; gap: 8px; font-stretch: 80%; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; } .ds-row .ds-arrow { transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1); } .ds-row:hover .ds-arrow { transform: translateX(4px); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Signed Technical Sheet",
+    "overview": "The site is a multipart carbon form filled in by hand-feel machinery: a technical sheet where each project is a test with a measured value, a spec line, a red PASS stamp and a signature line. The paper does the structuring. Black printed rules divide the sheet into cells; condensed capital labels name each cell; the answers are filled in carbon blue, slightly off register, as if pressed through from the top copy. Nothing floats and nothing is decorated; every mark is either printed form, filled value, or stamp.\n\nLanguage is the copy you hold. The English original is navy, the Italian copy is bordeaux, and the sign-off at the bottom is the light paper copy torn along a perforation. Copy colors own whole regions of the page (the root background and every cell), never accents or chips. Density is high and orderly, like a real form: tight ruled cells, tabular numerals, dotted leaders from each description to its value.\n\nThe world refuses the dev-portfolio default: no name hero over a gradient, no skill-badge clouds, no card grid of projects. Projects are rows in a test schedule and sheets in their own right.",
+    "keyCharacteristics": [
+      "Three inks only: printed black, carbon blue, stamp red.",
+      "Paper color is a region, never an accent: navy (EN), bordeaux (IT), light paper (sign-off).",
+      "Ruled cells built from 1px ink gaps, with 3px heavy rules opening each block.",
+      "Archivo on its width axis for everything printed and filled; Martian Mono for every identifier and measurement.",
+      "One signature motion: stamps impress in sequence; copy color cross-fades on language change."
+    ],
+    "rules": [
+      {
+        "name": "The Three Inks Rule",
+        "body": "Ink color is decided by what the mark is: printed form is black, filled-in answers are carbon, stamps are red. No fourth ink, no gray text, no opacity-faded text for hierarchy.",
+        "section": "colors"
+      },
+      {
+        "name": "The Whole Copy Rule",
+        "body": "Paper colors change whole regions through the `--copy` variable; cells, strip and stamp rings read `--copy` so the entire sheet flips together. Never use a copy color as a badge, button fill or highlight (the copy tabs are the one place a copy color appears as a swatch, because they are the copies).",
+        "section": "colors"
+      },
+      {
+        "name": "The Stamp Stays On The Sheets Rule",
+        "body": "Stamps belong to the navy and bordeaux test sheets; the paper sign-off carries no stamp.",
+        "section": "colors"
+      },
+      {
+        "name": "The Carbon Impression Rule",
+        "body": "Filled values (field fills, measured values, schedule names and values) carry a faint off-register second pass: `text-shadow: 0.45px 0.35px 0 color-mix(in srgb, carbon 45%, transparent)`. Printed labels and body text never do; the impression is what separates written from printed.",
+        "section": "typography"
+      },
+      {
+        "name": "The Numbers Are Measured Rule",
+        "body": "Any identifier, count, frequency, latency or period is set in Martian Mono with tabular numerals. Archivo never sets a measurement.",
+        "section": "typography"
+      },
+      {
+        "name": "The Label Names A Cell Rule",
+        "body": "A label always sits inside a ruled cell, column head or signature line and names the value beneath or beside it. It never floats above a heading as a decorative lead-in.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ruled Cell Rule",
+        "body": "Grids of fields are built as ink-backed grids with a 1px gap and copy-colored cells, so the rules are the ink showing through. Never draw cell borders individually.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat Form Rule",
+        "body": "Paper does not cast shadows. Only objects attached to the paper (a print, a lifted tab) may.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "**Do** color by mark type: black for printed form, carbon for filled answers, red for stamps only.",
+      "**Do** switch paper through the `--copy` variable so the root, strip, cells and stamp rings flip together, with the 380ms ease-out cross-fade.",
+      "**Do** build field groups as 1px ink-gap grids and open each group with a 3px ink rule.",
+      "**Do** set every ID, count and measurement in Martian Mono with tabular numerals.",
+      "**Do** give filled values the carbon impression text-shadow, and only filled values.",
+      "**Do** use the 3px carbon outline at 3px offset for focus everywhere, and honor reduced motion by dropping stamp animation and transitions."
+    ],
+    "donts": [
+      "**Don't** add a fourth ink, gray text, or opacity-faded text for hierarchy.",
+      "**Don't** use copy colors (navy, bordeaux, paper) as accents, chips or button fills.",
+      "**Don't** stamp the sign-off copy; stamps live on the test sheets.",
+      "**Don't** round cells, bars or tables; corners belong only to the button, tabs, stamp and eyelets.",
+      "**Don't** add shadows to the form itself; only attached objects (the print) cast one.",
+      "**Don't** use a label as a decorative lead-in above a heading; labels name cells.",
+      "**Don't** introduce project cards, skill badges or a gradient name hero; projects are schedule rows and sheets."
+    ]
+  }
+}

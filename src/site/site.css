@@ -1,0 +1,1469 @@
+/* Technical sheet on a multipart carbon form.
+   Copies own whole regions; three inks only: printed ink, carbon (filled values), stamp.
+   The EN original is navy, the IT copy bordeaux, the sign-off a light paper copy;
+   each copy carries its own ink set so contrast holds on every ground. */
+
+:root {
+    --copy-en: #0f1b33;
+    --copy-it: #5a1322;
+    --copy-paper: #f2efe8;
+
+    --ink: #ede8dc;
+    --carbon: #e2b659;
+    --stamp: #ff6a55;
+
+    --copy: var(--copy-en);
+    --tint: color-mix(in srgb, var(--carbon) 10%, var(--copy));
+
+    --f-form: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+    --f-measure: 'Martian Mono', ui-monospace, Menlo, monospace;
+
+    --gutter: clamp(16px, 4vw, 48px);
+    --sheet-max: 1200px;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+    color-scheme: dark;
+}
+
+:root[data-copy='bordeaux'] {
+    --copy: var(--copy-it);
+    --ink: #f6e9ea;
+    --carbon: #ffc9a8;
+    --stamp: #ff8a7a;
+    --tint: color-mix(in srgb, var(--carbon) 10%, var(--copy));
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+html {
+    background: var(--copy);
+    scroll-behavior: smooth;
+    scroll-padding-top: 96px;
+    scrollbar-color: var(--ink) var(--copy);
+    transition: background-color 380ms var(--ease-out);
+}
+
+body {
+    margin: 0;
+    background: var(--copy);
+    color: var(--ink);
+    font-family: var(--f-form);
+    font-size: 1rem;
+    line-height: 1.5;
+    font-stretch: 100%;
+    caret-color: var(--carbon);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    transition: background-color 380ms var(--ease-out);
+}
+
+::selection {
+    background: var(--carbon);
+    color: var(--copy);
+}
+
+a {
+    color: inherit;
+    text-underline-offset: 0.22em;
+    text-decoration-thickness: 2px;
+}
+
+:focus-visible {
+    outline: 3px solid var(--carbon);
+    outline-offset: 3px;
+}
+
+h1,
+h2,
+h3,
+p,
+ol,
+ul,
+dl,
+dd,
+figure {
+    margin: 0;
+}
+
+ol,
+ul {
+    padding: 0;
+    list-style: none;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    white-space: nowrap;
+}
+
+.skip {
+    position: absolute;
+    left: var(--gutter);
+    top: -60px;
+    background: var(--ink);
+    color: var(--copy);
+    padding: 10px 14px;
+    font-weight: 700;
+    z-index: 20;
+}
+
+.skip:focus {
+    top: 8px;
+}
+
+/* ───────── Printed type ───────── */
+
+.label {
+    display: block;
+    font-family: var(--f-form);
+    font-stretch: 75%;
+    font-weight: 650;
+    font-size: 0.78rem;
+    line-height: 1.2;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--ink);
+}
+
+.fill,
+.result__value,
+.schedule__value,
+.schedule__name {
+    /* Carbon impression: a faint second pass, slightly off register. */
+    text-shadow: 0.45px 0.35px 0 color-mix(in srgb, var(--carbon) 45%, transparent);
+}
+
+.fill {
+    font-family: var(--f-form);
+    font-weight: 500;
+    font-size: 1.125rem;
+    line-height: 1.35;
+    color: var(--carbon);
+}
+
+.fill--lg {
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    font-weight: 600;
+}
+
+.fill--display {
+    font-stretch: 82%;
+    font-weight: 750;
+    font-size: clamp(2.75rem, 7.2vw, 5.75rem);
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    text-wrap: balance;
+}
+
+.fill--prose {
+    font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+    line-height: 1.5;
+    max-width: 62ch;
+    text-wrap: pretty;
+}
+
+.fill--mono {
+    font-family: var(--f-measure);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.01em;
+}
+
+.fill--link {
+    text-decoration: none;
+    overflow-wrap: anywhere;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 2px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 260ms var(--ease-out);
+}
+
+.fill--link:hover {
+    background-size: 100% 2px;
+}
+
+/* ───────── Form strip ───────── */
+
+.strip {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 24px;
+    padding: 10px var(--gutter);
+    background: var(--copy);
+    border-bottom: 3px solid var(--ink);
+    transition: background-color 380ms var(--ease-out);
+}
+
+.strip__title {
+    display: grid;
+    text-decoration: none;
+    line-height: 1.15;
+}
+
+.strip__report {
+    font-stretch: 75%;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.strip__doc {
+    font-family: var(--f-measure);
+    font-size: 0.75rem;
+    letter-spacing: 0;
+}
+
+.strip__back {
+    justify-self: start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-stretch: 80%;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.85rem;
+    text-decoration: none;
+    padding: 8px 0;
+}
+
+.strip__back:hover {
+    color: var(--carbon);
+}
+
+.eyelets ol {
+    display: flex;
+    justify-content: center;
+    gap: clamp(12px, 2vw, 28px);
+}
+
+.eyelets a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 0;
+    font-stretch: 80%;
+    font-weight: 650;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+/* The punched eyelet: a ring through the form edge. */
+.eyelets a::before {
+    content: '';
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    border: 2px solid var(--ink);
+    background: radial-gradient(circle, var(--ink) 0 2px, transparent 2.5px);
+    flex: none;
+}
+
+.eyelets a:hover {
+    color: var(--carbon);
+}
+
+.eyelets a:hover::before {
+    border-color: var(--carbon);
+    background: var(--carbon);
+}
+
+.copies {
+    grid-column: 3;
+    justify-self: end;
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+}
+
+.copies__tab {
+    appearance: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: baseline;
+    gap: 6px;
+    min-height: 40px;
+    padding: 8px 12px;
+    border: 1.5px solid var(--ink);
+    border-radius: 3px;
+    color: var(--ink);
+    font-family: var(--f-form);
+    font-stretch: 80%;
+    font-weight: 800;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    transition: transform 200ms var(--ease-out), box-shadow 200ms var(--ease-out);
+}
+
+.copies__tab--en {
+    background: var(--copy-en);
+}
+
+.copies__tab--it {
+    background: var(--copy-it);
+}
+
+.copies__note {
+    font-family: var(--f-measure);
+    font-weight: 500;
+    font-size: 0.72rem;
+    letter-spacing: 0;
+}
+
+.copies__tab[aria-pressed='true'] {
+    box-shadow: 0 3px 0 -1px var(--ink), 0 6px 14px -6px rgba(20, 20, 20, 0.45);
+    transform: translateY(-2px);
+}
+
+.copies__tab[aria-pressed='false'] {
+    opacity: 0.78;
+}
+
+.copies__tab:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* ───────── Sheets ───────── */
+
+.sheet {
+    width: 100%;
+    max-width: var(--sheet-max);
+    margin-inline: auto;
+    padding-inline: var(--gutter);
+}
+
+.cover {
+    padding-top: clamp(16px, 2.2vw, 28px);
+}
+
+.block {
+    padding-top: clamp(64px, 9vw, 112px);
+}
+
+/* Ruled cells: the ink shows through the 1px gaps. */
+.cover__grid,
+.project__grid,
+.record,
+.signoff__fields {
+    display: grid;
+    gap: 1px;
+    background: var(--ink);
+    border: 1px solid var(--ink);
+}
+
+.cover__grid .field,
+.project__grid .field,
+.record .field,
+.signoff__fields .field,
+.attachment {
+    background: var(--copy);
+    transition: background-color 380ms var(--ease-out);
+}
+
+.field {
+    display: grid;
+    align-content: start;
+    gap: 8px;
+    padding: 12px 16px 14px;
+}
+
+.cover__grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    border-top-width: 3px;
+}
+
+.field--subject {
+    grid-column: 1 / span 9;
+    grid-row: 1;
+    padding-bottom: 22px;
+}
+
+.attachment {
+    grid-column: 10 / span 3;
+    grid-row: 1 / span 3;
+}
+
+.field--role {
+    grid-column: 1 / span 5;
+}
+
+.cover__grid .field:nth-of-type(3) {
+    grid-column: 6 / span 2;
+}
+
+.cover__grid .field:nth-of-type(4) {
+    grid-column: 8 / span 2;
+}
+
+.field--scope {
+    grid-column: 1 / span 9;
+}
+
+/* Attachment A: the photo print, stapled to the sheet. */
+.attachment {
+    position: relative;
+    display: grid;
+    place-items: center;
+    padding: 30px 20px 40px;
+    overflow: hidden;
+}
+
+.attachment__print {
+    width: min(100%, 210px);
+    transform: rotate(2.4deg);
+}
+
+.attachment img {
+    width: 100%;
+    border: 7px solid #ffffff;
+    box-shadow: 0 14px 26px -12px rgba(20, 20, 20, 0.45), 0 2px 5px rgba(20, 20, 20, 0.18);
+}
+
+.attachment__print {
+    position: relative;
+}
+
+.staple {
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    z-index: 2;
+    width: 64px;
+    height: 22px;
+    translate: -50% 0;
+    rotate: -3deg;
+}
+
+.attachment figcaption {
+    position: absolute;
+    left: 16px;
+    bottom: 12px;
+}
+
+/* ───────── Results table ───────── */
+
+.results {
+    width: 100%;
+    margin-top: clamp(20px, 2.4vw, 30px);
+    border-collapse: collapse;
+}
+
+.results thead th {
+    display: table-cell;
+    text-align: left;
+    padding: 0 12px 10px;
+    border-bottom: 3px solid var(--ink);
+}
+
+.results .result__value-head {
+    text-align: left;
+}
+
+.results .result__stamp-head {
+    text-align: center;
+}
+
+.result th,
+.result td {
+    padding: 13px 12px;
+    border-bottom: 1px solid var(--ink);
+    vertical-align: middle;
+}
+
+.result__id {
+    width: 1%;
+    white-space: nowrap;
+    text-align: left;
+    font-family: var(--f-measure);
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.result__id a {
+    text-decoration-thickness: 1.5px;
+}
+
+.result__id a:hover {
+    color: var(--carbon);
+}
+
+.result__text {
+    font-size: 1.0625rem;
+    line-height: 1.35;
+}
+
+/* Dotted leader from the description to the value it measures. */
+.result__text {
+    padding-right: 0 !important;
+}
+
+.leader {
+    display: flex;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.leader::after {
+    content: '';
+    flex: 1 1 2rem;
+    min-width: 2rem;
+    margin-bottom: 0.35em;
+    border-bottom: 2px dotted var(--ink);
+}
+
+.result__value {
+    width: 1%;
+    white-space: nowrap;
+    text-align: left;
+    padding-left: 12px !important;
+    font-family: var(--f-measure);
+    font-weight: 600;
+    font-size: clamp(1.6rem, 3.4vw, 2.75rem);
+    line-height: 1;
+    letter-spacing: -0.03em;
+    font-variant-numeric: tabular-nums;
+    color: var(--carbon);
+}
+
+.result__stamp {
+    width: 1%;
+    text-align: center;
+    padding-inline: 20px !important;
+}
+
+/* ───────── The rubber stamp ───────── */
+
+.stamp {
+    display: inline-block;
+    padding: 5px 12px 4px;
+    border: 3px solid var(--stamp);
+    border-radius: 6px;
+    box-shadow: inset 0 0 0 2px var(--copy), inset 0 0 0 3.5px var(--stamp);
+    color: var(--stamp);
+    font-family: var(--f-form);
+    font-stretch: 62%;
+    font-weight: 850;
+    font-size: 1.2rem;
+    line-height: 1;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    rotate: -7deg;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='70'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.2 2.05'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='70'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' seed='7'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -2.2 2.05'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    animation: stamp-impress 520ms var(--ease-out) both;
+    animation-delay: calc(650ms + var(--stamp-order, 0) * 340ms);
+}
+
+.stamp--void {
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    padding: 8px 20px 6px;
+    border-width: 5px;
+    rotate: -9deg;
+}
+
+@keyframes stamp-impress {
+    0% {
+        opacity: 0.55;
+        transform: scale(1.65);
+        filter: blur(2.5px);
+    }
+    55% {
+        opacity: 1;
+        transform: scale(0.95);
+        filter: blur(0);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ───────── Acceptance box ───────── */
+
+.accept {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) auto minmax(180px, 0.9fr);
+    align-items: end;
+    gap: 24px 40px;
+    margin-top: clamp(20px, 2.4vw, 30px);
+    padding: 16px;
+    border: 1px solid var(--ink);
+    border-top-width: 3px;
+}
+
+.accept--compact {
+    margin-top: 48px;
+}
+
+.accept__note {
+    margin-top: 6px;
+    font-size: 1.0625rem;
+}
+
+.accept__actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px 28px;
+}
+
+.accept__signature {
+    display: grid;
+    gap: 6px;
+}
+
+.accept__sign {
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.accept__x {
+    font-stretch: 75%;
+    font-weight: 800;
+    font-size: 1.25rem;
+    line-height: 1;
+}
+
+.accept__line {
+    flex: 1;
+    height: 30px;
+    border-bottom: 1.5px solid var(--ink);
+}
+
+.accept__meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 52px;
+    padding: 14px 24px;
+    border: 0;
+    border-radius: 3px;
+    background: var(--ink);
+    color: var(--copy);
+    font-family: var(--f-form);
+    font-stretch: 85%;
+    font-weight: 750;
+    font-size: 1.05rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 200ms var(--ease-out), transform 200ms var(--ease-out);
+}
+
+.button:hover {
+    background: var(--carbon);
+}
+
+.button:hover .arrow {
+    transform: translateX(3px);
+}
+
+.button:active {
+    transform: translateY(1px);
+}
+
+.link {
+    font-weight: 650;
+    font-size: 1rem;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+}
+
+.link:hover {
+    color: var(--carbon);
+}
+
+.arrow {
+    flex: none;
+    transition: transform 200ms var(--ease-out);
+}
+
+.arrow--back {
+    transform: scaleX(-1);
+}
+
+/* ───────── Section bars ───────── */
+
+.bar {
+    margin: 0;
+    padding: 10px 16px 9px;
+    background: var(--ink);
+    color: var(--copy);
+    font-family: var(--f-form);
+    font-stretch: 75%;
+    font-weight: 800;
+    font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+    line-height: 1.1;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    transition: color 380ms var(--ease-out);
+}
+
+.bar--caption {
+    caption-side: top;
+    text-align: left;
+    margin-top: clamp(40px, 5vw, 56px);
+    margin-bottom: 18px;
+}
+
+/* ───────── Test schedule ───────── */
+
+.schedule {
+    counter-reset: none;
+}
+
+.schedule__row {
+    position: relative;
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr) minmax(200px, 300px) auto;
+    align-items: center;
+    gap: 16px 28px;
+    padding: 22px 16px;
+    border-bottom: 1px solid var(--ink);
+    transition: background-color 200ms var(--ease-out);
+}
+
+.schedule__row:hover {
+    background: var(--tint);
+}
+
+.schedule__id {
+    font-family: var(--f-measure);
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.schedule__name {
+    font-stretch: 85%;
+    font-weight: 750;
+    font-size: clamp(1.5rem, 2.6vw, 2.125rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    color: var(--carbon);
+}
+
+.schedule__name a {
+    text-decoration: none;
+}
+
+/* The whole row opens the sheet; the name carries the link. */
+.stretch::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+}
+
+.schedule__meta {
+    margin-top: 6px;
+    font-size: 0.95rem;
+}
+
+.schedule__key {
+    display: grid;
+    gap: 2px;
+}
+
+.schedule__value {
+    font-family: var(--f-measure);
+    font-weight: 600;
+    font-size: 1.5rem;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--carbon);
+    font-variant-numeric: tabular-nums;
+}
+
+.schedule__keytext {
+    font-size: 0.95rem;
+}
+
+.schedule__open {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-stretch: 80%;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+.schedule__row:hover .arrow {
+    transform: translateX(4px);
+}
+
+.schedule__row:focus-within {
+    outline: 3px solid var(--carbon);
+    outline-offset: -3px;
+}
+
+.schedule__name a:focus-visible {
+    outline: none;
+}
+
+/* ───────── Operator record ───────── */
+
+.record {
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 2fr) minmax(0, 1fr) minmax(0, 1fr);
+    border-top: 0;
+}
+
+.record--three {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-top: 32px;
+    border-top: 3px solid var(--ink);
+}
+
+.duties {
+    padding: 28px 16px 8px;
+}
+
+.checklist {
+    display: grid;
+    gap: 0;
+    margin-top: 12px;
+    max-width: 88ch;
+}
+
+.checklist li {
+    display: grid;
+    grid-template-columns: 18px minmax(0, 1fr);
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px dotted var(--ink);
+    font-size: 1.0625rem;
+    line-height: 1.5;
+}
+
+.check {
+    margin-top: 4px;
+}
+
+.plain {
+    display: grid;
+    gap: 14px;
+}
+
+.plain li {
+    display: grid;
+    gap: 2px;
+}
+
+.plain__sub {
+    font-size: 0.95rem;
+}
+
+/* ───────── Instruments ───────── */
+
+.instruments {
+    border-left: 1px solid var(--ink);
+    border-right: 1px solid var(--ink);
+}
+
+.instruments__row {
+    display: grid;
+    grid-template-columns: minmax(160px, 240px) minmax(0, 1fr);
+    align-items: baseline;
+    gap: 8px 24px;
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--ink);
+}
+
+/* ───────── Sign-off: the pink file copy ───────── */
+
+.signoff {
+    --copy: var(--copy-paper);
+    --ink: #141414;
+    --carbon: #16318c;
+    --stamp: #c8232c;
+    --tint: color-mix(in srgb, var(--carbon) 7%, var(--copy));
+    position: relative;
+    margin-top: clamp(80px, 10vw, 128px);
+    padding: clamp(48px, 6vw, 72px) 0 clamp(56px, 7vw, 88px);
+    background: var(--copy);
+    color: var(--ink);
+    color-scheme: light;
+}
+
+.perforation {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 14px;
+    height: 8px;
+    background: radial-gradient(circle at 50% 50%, var(--page, var(--copy-en)) 0 2.6px, var(--ink) 2.7px 3.2px, transparent 3.4px) repeat-x;
+    background-size: 14px 8px;
+}
+
+:root .perforation {
+    --page: var(--copy-en);
+}
+
+:root[data-copy='bordeaux'] .perforation {
+    --page: var(--copy-it);
+}
+
+.signoff__lead {
+    margin: clamp(28px, 4vw, 44px) 0;
+    max-width: 24ch;
+    font-stretch: 85%;
+    font-weight: 750;
+    font-size: clamp(1.75rem, 4.4vw, 3.25rem);
+    line-height: 1.02;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+}
+
+.signoff__fields {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    border-top-width: 3px;
+}
+
+.signoff__fields .fill {
+    font-size: clamp(1.0625rem, 1.6vw, 1.3rem);
+    font-weight: 600;
+}
+
+.signoff__cv {
+    display: inline-block;
+    margin-top: 24px;
+}
+
+/* ───────── Project sheet ───────── */
+
+.project__grid {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    border-top-width: 3px;
+}
+
+.project__grid .field:nth-child(1) {
+    grid-column: 1 / span 2;
+}
+
+.project__name {
+    grid-column: 3 / span 10;
+    padding-bottom: 22px;
+}
+
+.project__grid .field:nth-child(3) {
+    grid-column: 1 / span 4;
+}
+
+.project__grid .field:nth-child(4) {
+    grid-column: 5 / span 3;
+}
+
+.project__stack {
+    grid-column: 8 / span 5;
+}
+
+.project__scope {
+    grid-column: 1 / -1;
+}
+
+.work,
+.inspection {
+    margin-top: clamp(40px, 5vw, 56px);
+}
+
+.inspection__list li {
+    display: grid;
+    grid-template-columns: 88px minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px 20px;
+    padding: 14px 12px;
+    border-bottom: 1px solid var(--ink);
+    font-size: 1.0625rem;
+}
+
+.inspection__result {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.work__list {
+    counter-reset: work;
+    max-width: 88ch;
+}
+
+.work__list li {
+    counter-increment: work;
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 12px;
+    padding: 14px 16px;
+    border-bottom: 1px dotted var(--ink);
+    font-size: 1.0625rem;
+}
+
+.work__list li::before {
+    content: counter(work, decimal-leading-zero);
+    font-family: var(--f-measure);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--carbon);
+    padding-top: 2px;
+}
+
+.pager {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    margin-top: clamp(40px, 5vw, 56px);
+    background: var(--ink);
+    border: 1px solid var(--ink);
+}
+
+.pager > * {
+    background: var(--copy);
+}
+
+.pager--single {
+    grid-template-columns: 1fr;
+}
+
+.pager__link {
+    display: grid;
+    gap: 6px;
+    padding: 16px;
+    text-decoration: none;
+    transition: background-color 200ms var(--ease-out);
+}
+
+.pager__link .fill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 650;
+}
+
+.pager__link--next {
+    text-align: right;
+    justify-items: end;
+}
+
+.pager__link:hover {
+    background: var(--tint);
+}
+
+/* ───────── Void sheet ───────── */
+
+.void {
+    display: grid;
+    justify-items: start;
+    gap: 28px;
+    padding-bottom: 96px;
+    min-height: 70vh;
+}
+
+.void__grid {
+    width: 100%;
+}
+
+/* ───────── Footer ───────── */
+
+.footer {
+    border-top: 3px solid var(--ink);
+}
+
+.footer__row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 24px;
+    padding-block: 18px 22px;
+    font-family: var(--f-measure);
+    font-size: 0.78rem;
+}
+
+/* ───────── Responsive ───────── */
+
+@media (max-width: 1080px) {
+    .strip {
+        grid-template-columns: auto auto;
+        justify-content: space-between;
+        row-gap: 6px;
+    }
+
+    .eyelets {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+
+    .eyelets ol {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        column-gap: 18px;
+        row-gap: 0;
+    }
+
+    .eyelets li {
+        flex: none;
+    }
+
+    .copies {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .strip__back {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+}
+
+@media (max-width: 900px) {
+    .cover__grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+
+    .field--subject {
+        grid-column: 1 / span 4;
+    }
+
+    .attachment {
+        grid-column: 5 / span 2;
+        grid-row: 1 / span 2;
+        padding: 26px 12px 36px;
+    }
+
+    .field--role {
+        grid-column: 1 / span 4;
+    }
+
+    .cover__grid .field:nth-of-type(3) {
+        grid-column: 1 / span 3;
+    }
+
+    .cover__grid .field:nth-of-type(4) {
+        grid-column: 4 / span 3;
+    }
+
+    .field--scope {
+        grid-column: 1 / -1;
+    }
+
+    .accept {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .accept__label {
+        grid-column: 1 / -1;
+    }
+
+    .schedule__row {
+        grid-template-columns: 72px minmax(0, 1fr) auto;
+    }
+
+    .schedule__key {
+        grid-column: 2;
+        grid-row: 2;
+    }
+
+    .schedule__open {
+        grid-column: 3;
+        grid-row: 1 / span 2;
+    }
+
+    .record {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .record--three,
+    .signoff__fields {
+        grid-template-columns: 1fr;
+    }
+
+    .project__grid .field:nth-child(1) {
+        grid-column: 1 / span 3;
+    }
+
+    .project__name {
+        grid-column: 4 / span 9;
+    }
+
+    .project__grid .field:nth-child(3) {
+        grid-column: 1 / span 6;
+    }
+
+    .project__grid .field:nth-child(4) {
+        grid-column: 7 / span 6;
+    }
+
+    .project__stack {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 640px) {
+    .copies__note {
+        display: none;
+    }
+
+    .eyelets a {
+        font-size: 0.78rem;
+        padding: 6px 0;
+        gap: 6px;
+    }
+
+    .eyelets ol {
+        column-gap: 14px;
+    }
+
+    .strip__report {
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+
+    .strip__doc {
+        display: none;
+    }
+
+    .cover__grid {
+        grid-template-columns: minmax(0, 1fr) 132px;
+    }
+
+    .field--subject,
+    .field--role {
+        grid-column: 1;
+    }
+
+    .attachment {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+        padding: 22px 8px 32px;
+    }
+
+    .attachment img {
+        border-width: 5px;
+    }
+
+    .staple {
+        width: 48px;
+        height: 18px;
+    }
+
+    .attachment figcaption {
+        left: 8px;
+        bottom: 8px;
+    }
+
+    .cover__grid .field:nth-of-type(3) {
+        grid-column: 1;
+    }
+
+    .cover__grid .field:nth-of-type(4) {
+        grid-column: 2;
+    }
+
+    .field--scope {
+        grid-column: 1 / -1;
+    }
+
+    .fill--display {
+        font-size: clamp(2.5rem, 12vw, 3.25rem);
+    }
+
+    .results thead {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+    }
+
+    .result {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-areas:
+            'id stamp'
+            'value stamp'
+            'text text';
+        align-items: center;
+        gap: 6px 16px;
+        padding: 16px 4px;
+        border-bottom: 1px solid var(--ink);
+    }
+
+    .result th,
+    .result td {
+        padding: 0 !important;
+        border: 0;
+        width: auto;
+    }
+
+    .result__id {
+        grid-area: id;
+    }
+
+    .result__value {
+        grid-area: value;
+        text-align: left;
+        font-size: 2rem;
+    }
+
+    .result__text {
+        grid-area: text;
+    }
+
+    .result__stamp {
+        grid-area: stamp;
+    }
+
+    .leader::after {
+        display: none;
+    }
+
+    .accept {
+        grid-template-columns: 1fr;
+    }
+
+    .accept__actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .accept__actions .button {
+        justify-content: space-between;
+    }
+
+    .accept__actions .link {
+        align-self: flex-start;
+    }
+
+    .schedule__row {
+        grid-template-columns: minmax(0, 1fr) auto;
+        padding: 18px 4px;
+    }
+
+    .schedule__id {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .schedule__main {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+
+    .schedule__key {
+        grid-column: 1;
+        grid-row: 3;
+    }
+
+    .schedule__open {
+        grid-column: 2;
+        grid-row: 1;
+    }
+
+    .schedule__opentext {
+        display: none;
+    }
+
+    .record {
+        grid-template-columns: 1fr;
+    }
+
+
+    .instruments__row {
+        grid-template-columns: 1fr;
+    }
+
+    .project__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .project__grid .field:nth-child(n) {
+        grid-column: 1;
+    }
+
+    .pager {
+        grid-template-columns: 1fr;
+    }
+
+    .pager__link--next {
+        text-align: left;
+        justify-items: start;
+    }
+
+    .work__list li {
+        grid-template-columns: 36px minmax(0, 1fr);
+        padding-inline: 4px;
+    }
+}
+
+/* Scope always spans the full sheet, whatever its position in the grid. */
+.project__grid .field.project__scope {
+    grid-column: 1 / -1;
+}
+
+@media (max-width: 640px) {
+    .inspection__list li {
+        grid-template-columns: minmax(0, 1fr) auto;
+        padding-inline: 4px;
+    }
+
+    .inspection__text {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+
+    .inspection__list .result__id {
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .inspection__result {
+        grid-column: 2;
+        grid-row: 1;
+        justify-self: end;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
